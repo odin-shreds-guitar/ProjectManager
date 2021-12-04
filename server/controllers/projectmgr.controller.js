@@ -16,3 +16,9 @@ module.exports.createProject = ( request, response ) => {
 		.then( project => response.json(project))
 		.catch( err => response.json(err) )
 }
+
+module.exports.getAllProjects = ( request, response ) => {
+	Project.find({})
+		.then( project => response.json(project))
+		.catch( err => response.json(err))
+}
