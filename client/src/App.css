@@ -13,6 +13,39 @@
   }
 }
 
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}  
+
+p {
+  background-color: rgb(243, 240, 240);
+  padding: 1em;
+  margin: 10px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.box {
+  width: 70%;
+}
+
+label {
+  color: grey;
+}
+
+.button{
+  border-style: none;
+  width: 250px;  
+  height: 40px;
+  border-radius: 10px;
+  font-size: large;
+  margin-top: 15px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
