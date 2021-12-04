@@ -1,6 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import axios from 'axios';
 import ProjectForm from '../components/ProjectForm';
+import ProjectList from '../components/ProjectList';
 
 const Main = () => {
     const [projects, setProjects] = useState([]);
@@ -13,6 +14,8 @@ const Main = () => {
     return (
         <div>
 			<ProjectForm />
+            <hr/>
+            <ProjectList projects={projects}/>
         </div>
     )
 }
