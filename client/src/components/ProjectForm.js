@@ -13,7 +13,13 @@ const ProjectForm = () => {
 			price,
 			description
 		})
-			.then( response => console.log( response ))
+			.then( response => {
+				console.log( response );
+				// reset form
+				setTitle("");
+				setPrice("");
+				setDescription("")
+			})
 			.catch( err => console.log( err ))
 	}
 
@@ -21,15 +27,15 @@ const ProjectForm = () => {
 		<form onSubmit= { onSubmitHandler }>
 			<p>
                 <label>Title </label>
-                <input class="box" type="text" onChange = {(e)=>setTitle(e.target.value)}/>
+                <input class="box" type="text" value={title} onChange = {(e)=>setTitle(e.target.value)} />
             </p>
             <p>
                 <label>Price </label>
-                <input class="box" type="text" onChange = {(e)=>setPrice(e.target.value)}/>
+                <input class="box" type="text" value={price} onChange = {(e)=>setPrice(e.target.value)} />
             </p>
 			<p>
                 <label>Description </label>
-                <input class="box" type="text" onChange = {(e)=>setDescription(e.target.value)}/>
+                <input class="box" type="text" value={description} onChange = {(e)=>setDescription(e.target.value)} />
             </p>
             <input class="button" type="submit" value="Create"/>
 		</form>
