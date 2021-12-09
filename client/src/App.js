@@ -9,7 +9,7 @@ function App() {
       <h1>Project Manager</h1>
       <Router>
         < Main path="/" />
-        < Detail path="/projects/id" /> 
+        < Detail path="/projects/:id" /> 
       </Router>
     </div>
   );
