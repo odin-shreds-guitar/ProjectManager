@@ -22,3 +22,9 @@ module.exports.getAllProjects = ( request, response ) => {
 		.then( project => response.json(project))
 		.catch( err => response.json(err))
 }
+
+module.exports.getProject = ( request, response ) => {
+	Project.findOne({_id : request.params.id})
+		.then(project => response.json(project))
+		.catch(err => response.json(err))
+}
