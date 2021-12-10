@@ -34,18 +34,18 @@ const Edit = (props) => {
 		<h2>Currently updating: {title}</h2>
 		<p>
 			<label>Title </label>
-			<input className="box" type="text" value={title} onChange = {(e)=>setTitle(e.target.value)} />
+			<input className="box" type="text" defaultValue={title} onChange = {(e)=>setTitle(e.target.value)} />
 		</p>
 		<p>
 			<label>Price </label>
-			<input className="box" type="text" value={price} onChange = {(e)=>setPrice(e.target.value)} />
+			<input className="box" type="text" defaultValue={price} onChange = {(e)=>setPrice(e.target.value)} />
 		</p>
 		<p>
 			<label>Description </label>
-			<input className="box" type="text" value={description} onChange = {(e)=>setDescription(e.target.value)} />
+			<input className="box" type="text" defaultValue={description} onChange = {(e)=>setDescription(e.target.value)} />
 		</p>
 		<input className="button" type="submit" value="Update"/>
-		<a href={"http://localhost:3000/projects/" + id}><input className="button" value={"Back to " + title}/></a>
+		<a href={"http://localhost:3000/projects/" + id}><input className="button" defaultValue={"Go Back"}/></a>
 	</form>
 	)
 }
