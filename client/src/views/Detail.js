@@ -1,5 +1,6 @@
 import React, { useState, useEffect }from 'react';
 import axios from 'axios';
+import { Link } from '@reach/router';
 
 const Detail = (props) => {
     const [project, setProject] = useState({});
@@ -15,6 +16,7 @@ const Detail = (props) => {
 			<p>Project Title: {project.title}</p>
 			<p>Project Price: {project.price}</p>
 			<p>Project Description: {project.description}</p>
+            <Link to={"/projects/" + project._id + "/edit"}>Edit</Link>
         </div>
     )
 }

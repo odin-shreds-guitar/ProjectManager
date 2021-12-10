@@ -28,3 +28,9 @@ module.exports.getProject = ( request, response ) => {
 		.then(project => response.json(project))
 		.catch(err => response.json(err))
 }
+
+module.exports.updateProject = ( request, response ) => {
+	Project.findOneAndUpdate({_id : request.params.id}, request.body, {new:true})
+		.then(updatedProject => response.json(updatedProject))
+		.catch(err => response.json(err))
+}
