@@ -10,7 +10,8 @@ const Detail = (props) => {
 			}));
     },[])
     return (
-        <div>
+		<div>
+		<h1>{project.title}</h1>
 			<p>Project Title: {project.title}</p>
 			<p>Project Price: {project.price}</p>
 			<p>Project Description: {project.description}</p>

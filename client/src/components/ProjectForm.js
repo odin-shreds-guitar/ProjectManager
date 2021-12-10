@@ -28,6 +28,7 @@ const ProjectForm = (props) => {
 
 	return (
 		<form onSubmit= { onSubmitHandler }>
+			<h1>Project Manager</h1>
 			<p>
                 <label>Title </label>
                 <input class="box" type="text" value={title} onChange = {(e)=>setTitle(e.target.value)} />
