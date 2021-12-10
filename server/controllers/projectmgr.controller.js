@@ -34,3 +34,9 @@ module.exports.updateProject = ( request, response ) => {
 		.then(updatedProject => response.json(updatedProject))
 		.catch(err => response.json(err))
 }
+
+module.exports.deleteProject = ( request, response ) => {
+	Project.findOneAndDelete({_id : request.params.id })
+		.then(deleteConfirmation => response.json(deleteConfirmation))
+		.catch(err => response.json(err))
+}
