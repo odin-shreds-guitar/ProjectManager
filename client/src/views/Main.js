@@ -13,7 +13,9 @@ const Main = () => {
     },[])
     return (
         <div>
-			<ProjectForm />
+            {/* trying to pass the setter and getter form line 7 here */}
+            {/* passed the getter and setter allowing ProhjectList to see it */}
+			<ProjectForm projects={projects} setProjects={setProjects}/>
             <hr/>
             <ProjectList projects={projects}/>
         </div>

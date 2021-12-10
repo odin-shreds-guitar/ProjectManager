@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const ProjectForm = () => {
+
+const ProjectForm = (props) => {
 	const [title, setTitle] = useState("");
 	const [price, setPrice] = useState();
 	const [description, setDescription] = useState("");
+	const {projects, setProjects} = props;
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
@@ -14,8 +16,9 @@ const ProjectForm = () => {
 			description
 		})
 			.then( response => {
-				console.log( response );
-				// reset form
+				// refresh the list 
+				setProjects([...projects, response.data]);
+				// reset the form
 				setTitle("");
 				setPrice("");
 				setDescription("")
