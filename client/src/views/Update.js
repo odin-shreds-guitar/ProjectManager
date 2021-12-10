@@ -29,23 +29,23 @@ const Edit = (props) => {
 	}
 
 	return (
-		<form onSubmit= { updateProject }>
+		<form onSubmit={updateProject}>
 		<h1>Project Manager - Update</h1>
 		<h2>Currently updating: {title}</h2>
 		<p>
 			<label>Title </label>
-			<input class="box" type="text" value={title} onChange = {(e)=>setTitle(e.target.value)} />
+			<input className="box" type="text" value={title} onChange = {(e)=>setTitle(e.target.value)} />
 		</p>
 		<p>
 			<label>Price </label>
-			<input class="box" type="text" value={price} onChange = {(e)=>setPrice(e.target.value)} />
+			<input className="box" type="text" value={price} onChange = {(e)=>setPrice(e.target.value)} />
 		</p>
 		<p>
 			<label>Description </label>
-			<input class="box" type="text" value={description} onChange = {(e)=>setDescription(e.target.value)} />
+			<input className="box" type="text" value={description} onChange = {(e)=>setDescription(e.target.value)} />
 		</p>
-		<input class="button" type="submit" value="Update"/>
-		<a href="http://localhost:3000/"><input class="button" value="Go Back"/></a>
+		<input className="button" type="submit" value="Update"/>
+		<a href={"http://localhost:3000/projects/" + id}><input className="button" value={"Back to " + title}/></a>
 	</form>
 	)
 }
