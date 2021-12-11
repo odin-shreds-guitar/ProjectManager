@@ -11,7 +11,8 @@ module.exports.createProject = ( request, response ) => {
 	Project.create({
 		title, 
 		price, 
-		description,type
+		description,
+		type
 	})
 		.then( project => response.json(project))
 		.catch( err => response.json(err) )
