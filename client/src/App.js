@@ -1,8 +1,8 @@
 import './App.css';
 import Main from './views/Main';
 import { Router } from '@reach/router';
-import Detail from './views/Detail';
-import Edit from './views/Update';
+import Detail from './components/Detail';
+import Edit from './components/Update';
 
 function App() {
   return (
