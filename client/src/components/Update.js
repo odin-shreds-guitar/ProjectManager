@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { navigate } from '@reach/router';
+import Delete from './Delete';
 
 const Edit = (props) => {
 	const { id } = props;
@@ -35,16 +37,18 @@ const Edit = (props) => {
 			.catch((err) => console.log("There was an error updating the project" + err))
 	}
 
+	// after delete behavior
+	const redirectAfterDelete = (e) => {
+		// just goes back to the homepage
+		navigate("/")
+	}
+
 	return (
 		<form onSubmit={updateProject}>
 		<h1>Project Manager - Update</h1>
 		<h2>Currently updating: {title}</h2>
 		<p>
 			<label>Title </label>
-			{/* { errors.title 
-				? <span> { errors.title.message } </span>
-				: null
-			} */}
 			<input className="box" type="text" defaultValue={title} onChange = {(e)=>setTitle(e.target.value)} />
 		</p>
 		<p>
@@ -70,6 +74,7 @@ const Edit = (props) => {
 				</select>
 		</p>
 		<input className="button" type="submit" value="Update"/>
+		< Delete projectId={id} afterDelete={redirectAfterDelete}/>
 		<a href={"http://localhost:3000/projects/" + id}><input className="button" defaultValue={"Go Back"}/></a>
 	</form>
 	)
