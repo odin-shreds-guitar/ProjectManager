@@ -33,7 +33,10 @@ const Edit = (props) => {
 			description,
 			type,
 		})
-			.then(console.log("Updated successfully")) 
+			.then((res) => {
+				console.log("Project updated successfully" + res);
+				navigate("http://localhost:3000/projects/" + id)
+			}) 
 			.catch((err) => console.log("There was an error updating the project" + err))
 	}
 
@@ -75,7 +78,6 @@ const Edit = (props) => {
 		</p>
 		<input className="button" type="submit" value="Update"/>
 		< Delete projectId={id} afterDelete={redirectAfterDelete}/>
-		<a href={"http://localhost:3000/projects/" + id}><input className="button" defaultValue={"Go Back"}/></a>
 	</form>
 	)
 }
