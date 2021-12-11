@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        < Main path="/" />
+        < Main default path="/" />
         < Detail path="/projects/:id" /> 
         < Edit path="/projects/:id/edit"/>
       </Router>
