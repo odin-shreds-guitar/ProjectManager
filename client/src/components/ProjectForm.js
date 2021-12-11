@@ -9,6 +9,7 @@ const ProjectForm = (props) => {
 	const [type, setType] = useState();
 	const {projects, setProjects} = props;
 	const allTypes = ['Important', 'Critical', 'Low Priority'];
+	const [errors, setErrors] = useState({})
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
@@ -26,8 +27,14 @@ const ProjectForm = (props) => {
 				setPrice("");
 				setDescription("")
 				setType("")
+				setErrors("")
 			})
-			.catch( err => console.log( err ))
+			.catch( err => {
+				console.log( err )
+				if (err.response.data.errors){
+					setErrors(err.response.data.errors);
+				}
+			})
 	}
 
 	return (
@@ -37,10 +44,16 @@ const ProjectForm = (props) => {
                 <label>Title </label>
                 <input 
 				className="box" 
-				type="text" v
-				alue={title} 
-				onChange = {(e)=>setTitle(e.target.value)} />
+				type="text" 
+				value={title} 
+				onChange = {(e)=>setTitle(e.target.value)} /> 
             </p>
+				{/* validation  */}
+				{
+					errors.title 
+						? <span>{errors.title.message}</span>
+						: null
+				}
             <p>
                 <label>Price </label>
                 <input 
@@ -49,6 +62,12 @@ const ProjectForm = (props) => {
 				value={price} 
 				onChange = {(e)=>setPrice(e.target.value)} />
             </p>
+				{/* validation  */}
+				{
+					errors.price 
+						? <span>{errors.price.message}</span>
+						: null
+				}
 			<p>
                 <label>Description </label>
                 <input 
@@ -57,6 +76,12 @@ const ProjectForm = (props) => {
 				value={description} 
 				onChange = {(e)=>setDescription(e.target.value)} />
             </p>
+				{/* validation  */}
+				{
+					errors.description 
+						? <span>{errors.description.message}</span>
+						: null
+				}
 			<p>
                 <label>Type</label>
                 <select 

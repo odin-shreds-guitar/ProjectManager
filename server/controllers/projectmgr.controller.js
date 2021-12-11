@@ -15,10 +15,13 @@ module.exports.createProject = ( request, response ) => {
 		type
 	})
 		.then( project => response.json(project))
-		.catch( err => response.json(err) )
+		.catch( err => {
+			response.status(400).json(err)
+		} )
 }
 
 module.exports.getAllProjects = ( request, response ) => {
+	console.log("Getting all projects...")
 	Project.find({})
 		.then( project => response.json(project))
 		.catch( err => response.json(err))
