@@ -24,18 +24,22 @@ const ProjectList = (props) => {
 	}
 
 	return (
-		<div class="plist">
+		<div className="plist">
 					<table>
-						<tr>
-							<th>Project</th>
-							<th>Action</th>
-						</tr>
+						<thead>
+							<tr>
+								<th>Project</th>
+								<th>Action</th>
+							</tr>
+						</thead>
 						{ props.projects.map((project, index) => {
 						return (
-						<tr>
-							<td>{<Link class= "list" to={"/projects/"+ project._id} key={index}>{project.title}</Link>}</td>
-							<td><button onClick={(e) => {deleteProject(project._id)}}>Delete</button></td>
-						</tr>
+						<tbody>
+							<tr>
+								<td>{<Link className="list" to={"/projects/"+ project._id} key={index}>{project.title}</Link>}</td>
+								<td><button onClick={(e) => {deleteProject(project._id)}}>Delete</button></td>
+							</tr>
+						</tbody>
 						)
 						})}
 					</table>
