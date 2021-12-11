@@ -9,7 +9,16 @@ const ProjectList = (props) => {
 	const deleteProject = (projectId) => {
 		axios.delete('http://localhost:8000/api/projects/' + projectId)
 			.then(res => {
-				setProjects([...projects]);
+				//creating new array for refreshing 
+				let updatedProjects = projects.filter((project) => {
+					return project._id !== res.data._id
+					// if (project._id === res.data._id) {
+					// 	return false
+					// } else {
+					// 	return true
+					// }
+				})
+				setProjects( updatedProjects );
 			})
 			.catch(err => console.log(err))
 	}
