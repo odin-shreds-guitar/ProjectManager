@@ -34,6 +34,10 @@ const Edit = (props) => {
 		<h2>Currently updating: {title}</h2>
 		<p>
 			<label>Title </label>
+			{/* { errors.title 
+				? <span> { errors.title.message } </span>
+				: null
+			} */}
 			<input className="box" type="text" defaultValue={title} onChange = {(e)=>setTitle(e.target.value)} />
 		</p>
 		<p>
