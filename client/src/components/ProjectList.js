@@ -1,26 +1,22 @@
 import { Link } from "@reach/router";
 import React from "react";
-import axios from 'axios';
+import Delete from "./Delete";
 
 const ProjectList = (props) => {
 	const {projects, setProjects} = props;
 
-	// delete method
-	const deleteProject = (projectId) => {
-		axios.delete('http://localhost:8000/api/projects/' + projectId)
-			.then(res => {
-				//creating new array for refreshing 
-				let updatedProjects = projects.filter((project) => {
-					return project._id !== res.data._id
-					// if (project._id === res.data._id) {
-					// 	return false
-					// } else {
-					// 	return true
-					// }
-				})
-				setProjects( updatedProjects );
-			})
-			.catch(err => console.log(err))
+
+	const updateListAfterDelete = (deletedProject) => {
+		// creating a new array
+		let filteredProjects = projects.filter((project) => {
+			return project._id !== deletedProject
+			// if (project._id === deletedProject) {
+			// 	return false
+			// } else {
+			// 	return true
+			// }
+		});
+		setProjects(filteredProjects)
 	}
 
 	return (
@@ -37,7 +33,7 @@ const ProjectList = (props) => {
 						<tbody>
 							<tr>
 								<td>{<Link className="list" to={"/projects/"+ project._id} key={index}>{project.title}</Link>}</td>
-								<td><button onClick={(e) => {deleteProject(project._id)}}>Delete</button></td>
+								< Delete projectId={project._id} afterDelete={updateListAfterDelete}/>
 							</tr>
 						</tbody>
 						)

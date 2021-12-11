@@ -1,5 +1,6 @@
 import React, { useState, useEffect }from 'react';
 import axios from 'axios';
+import Delete from './Delete';
 
 const Detail = (props) => {
     const [project, setProject] = useState({});
@@ -10,6 +11,17 @@ const Detail = (props) => {
 				...res.data
 			}));
     },[])
+
+	// delete function 
+	const deleteProject = (props) => {
+		axios.delete('http://localhost:8000/api/projects/' + props.id)
+			.then(res => {
+				// we confirm response and go back to main view
+				console.log(res.data.title + " deleted successfully")
+			})
+			.catch(err => console.log(err))
+	}
+
     return (
         <form >
 		<h1>Project Manager</h1>

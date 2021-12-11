@@ -13,6 +13,10 @@
   }
 }
 
+.delete-btn{
+  background-color: indianred;
+}
+
 form, .plist {
   display: flex;
   align-items: center;
