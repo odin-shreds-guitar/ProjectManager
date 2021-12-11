@@ -6,6 +6,9 @@ const Edit = (props) => {
 	const [ title, setTitle ] = useState();
 	const [ price, setPrice ] = useState();
 	const [ description, setDescription ] = useState();
+	const [ type, setType ] = useState()
+	const allTypes = ['Important', 'Critical', 'Low Priority'];
+
 
 	// first we get the object to update
 	useEffect(() => {
@@ -14,6 +17,7 @@ const Edit = (props) => {
 				setTitle(res.data.title)
 				setPrice(res.data.price)
 				setDescription(res.data.description)
+				setType(res.data.type)
 			})
 			.catch(err => console.log(err))
 	}, [])
@@ -24,8 +28,11 @@ const Edit = (props) => {
 		axios.put('http://localhost:8000/api/projects/' + id , {
 			title,
 			price, 
-			description
-		}) 
+			description,
+			type,
+		})
+			.then(console.log("Updated successfully")) 
+			.catch((err) => console.log("There was an error updating the project" + err))
 	}
 
 	return (
@@ -47,6 +54,20 @@ const Edit = (props) => {
 		<p>
 			<label>Description </label>
 			<input className="box" type="text" defaultValue={description} onChange = {(e)=>setDescription(e.target.value)} />
+		</p>
+		<p>
+			<label>Type </label>
+			<select 
+				name="type" 
+				value={type} 
+				onChange = {(e)=>setType(e.target.value)}>
+					{/* option is needed for default to empty string*/}
+					{ 
+						allTypes.map((projectType, index) => (
+							<option value={projectType} key={index}>{projectType}</option>
+						))
+					}
+				</select>
 		</p>
 		<input className="button" type="submit" value="Update"/>
 		<a href={"http://localhost:3000/projects/" + id}><input className="button" defaultValue={"Go Back"}/></a>
