@@ -17,6 +17,7 @@ const Main = () => {
             {/* passed the getter and setter allowing ProhjectList to see it */}
 			<ProjectForm projects={projects} setProjects={setProjects}/>
             <hr/>
+            {/* Passing the getter and setter here so that the list can be updated after deletion */}
             <ProjectList projects={projects} setProjects={setProjects}/>
         </div>
     )
