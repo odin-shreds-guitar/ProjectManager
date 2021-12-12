@@ -7,13 +7,12 @@ module.exports.index = ( request, response ) => {
 }
 
 module.exports.createProject = ( request, response ) => {
-	const { title, price, description, type } = request.body;
+	const { title, price, description } = request.body;
 	Project.create({
 		title, 
 		price, 
-		description,
-		type
-	})
+		description
+		})
 		.then( project => response.json(project))
 		.catch( err => {
 			response.status(400).json(err)

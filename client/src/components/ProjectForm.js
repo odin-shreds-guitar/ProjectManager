@@ -3,10 +3,10 @@ import axios from 'axios'
 
 
 const ProjectForm = (props) => {
-	const [title, setTitle] = useState("");
-	const [price, setPrice] = useState();
-	const [description, setDescription] = useState("");
-	const [type, setType] = useState();
+	const { initialTtitle, initialPrice, initialDescription } = props;
+	const [title, setTitle] = useState(initialTtitle);
+	const [price, setPrice] = useState(initialPrice);
+	const [description, setDescription] = useState(initialDescription);
 	const {projects, setProjects} = props;
 	const allTypes = ['Important', 'Critical', 'Low Priority'];
 	const [errors, setErrors] = useState({})
@@ -16,8 +16,7 @@ const ProjectForm = (props) => {
 		axios.post('http://localhost:8000/api/project', {
 			title,
 			price,
-			description, 
-			type
+			description	
 		})
 			.then( response => {
 				// refresh the list 
@@ -26,7 +25,6 @@ const ProjectForm = (props) => {
 				setTitle("");
 				setPrice("");
 				setDescription("")
-				setType("")
 				setErrors("")
 			})
 			.catch( err => {
@@ -82,21 +80,6 @@ const ProjectForm = (props) => {
 						? <span>{errors.description.message}</span>
 						: null
 				}
-			<p>
-                <label>Type</label>
-                <select 
-				name="type" 
-				value={type} 
-				onChange = {(e)=>setType(e.target.value)}>
-					{/* option is needed for default to empty string*/}
-					<option value=""></option>
-					{ 
-						allTypes.map((projectType, index) => (
-							<option value={projectType} key={index}>{projectType}</option>
-						))
-					}
-				</select>
-            </p>
             <input className="button" type="submit" value="Create"/>
 		</form>
 	)

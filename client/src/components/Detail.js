@@ -38,10 +38,6 @@ const Detail = (props) => {
 			<label>Description </label>
 			<span className="box">{project.description}</span>
 		</p>
-		<p>
-			<label>Type </label>
-			<span className="box">{project.type}</span>
-		</p>
 		<a href={"http://localhost:3000/projects/" + project._id + "/edit"}><input className="button" defaultValue={"Edit"}/></a>
 		<a href={"http://localhost:3000/"}><input className="button" defaultValue={"Back to Home"}/></a>
 	</form>
